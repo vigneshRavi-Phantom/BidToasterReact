@@ -168,9 +168,7 @@ export const AuthContextProvider = ({
 
   const doLogin = async (response: { accessToken: string }) => {
     const accessToken = response.accessToken;
-    console.log('JWTToken', JWTToken);
     const accessTokenDecrypt = jwt.verify(accessToken, JWTToken);
-    console.log('accessTokenDecrypt', accessTokenDecrypt);
     const userAccessType =
       typeof accessTokenDecrypt === "object"
         ? accessTokenDecrypt.userAccessType
@@ -225,7 +223,6 @@ export const AuthContextProvider = ({
           fetchPolicy: "no-cache",
         });
         if (isSuccess("login", data)) {
-          console.log('data', data);
           await doLogin(data.login.data);
         }
       },

@@ -605,7 +605,7 @@ function ComparisonPage() {
                           <CSVLink
                             headers={rfqCSVHeaders}
                             data={rfqCSVData}
-                            filename={values.vendorName}
+                            filename="RFQ-Comparison"
                             ref={csvInstance}
                           />
                         </div>

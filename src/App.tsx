@@ -7,13 +7,6 @@ import { ApolloProvider, client } from "utils/ApolloUtils";
 import unspscDataList from "assets/json/unspsc.json";
 
 const App = () => {
-  window.addEventListener("beforeunload", () => {  
-    // ev.preventDefault();
-    console.log('close tab', localStorage.getItem('bt.token'));
-    localStorage.clear();
-    // return ev.returnValue = '';
-});
-
   return (
     <BrowserRouter>
       <ApolloProvider client={client}>
