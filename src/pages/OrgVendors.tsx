@@ -57,7 +57,7 @@ function OrgVendors() {
 
   useEffect(() => {
     if (accountProfile && accountProfile.userAccessType === "vendor")
-      navigate("/dashboard");
+      navigate("/rfq");
 
     getVendorsList();
     // eslint-disable-next-line

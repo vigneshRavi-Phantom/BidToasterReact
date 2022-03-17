@@ -5,12 +5,12 @@ import Sidebar from "containers/Admin/Sidebar";
 import { useAuth } from "contexts/AuthContextProvider";
 
 const OrgRoutes = [
-  {
-    path: "/dashboard",
-    name: "Dashboard",
-    icon: "ni ni-shop text-primary",
-    layout: "",
-  },
+  // {
+  //   path: "/dashboard",
+  //   name: "Dashboard",
+  //   icon: "ni ni-shop text-primary",
+  //   layout: "",
+  // },
   {
     path: "/org-items",
     name: "Items",
@@ -37,12 +37,12 @@ const OrgRoutes = [
   },
 ];
 const VendorRoutes = [
-  {
-    path: "/dashboard",
-    name: "Dashboard",
-    icon: "ni ni-shop text-primary",
-    layout: "",
-  },
+  // {
+  //   path: "/dashboard",
+  //   name: "Dashboard",
+  //   icon: "ni ni-shop text-primary",
+  //   layout: "",
+  // },
   {
     path: "/rfq",
     name: "RFQ",
@@ -57,12 +57,12 @@ const VendorRoutes = [
   },
 ];
 const BuyerRoutes = [
-  {
-    path: "/dashboard",
-    name: "Dashboard",
-    icon: "ni ni-shop text-primary",
-    layout: "",
-  },
+  // {
+  //   path: "/dashboard",
+  //   name: "Dashboard",
+  //   icon: "ni ni-shop text-primary",
+  //   layout: "",
+  // },
   // {
   //   collapse: true,
   //   name: "Buyer",
@@ -156,6 +156,11 @@ const Layout = (props: any) => {
         logo={{
           innerLink: "/",
           imgSrc: require("assets/img/logo.png").default,
+          imgAlt: "...",
+        }}
+        logoIcon={{
+          innerLink: "/",
+          imgSrc: require("assets/img/bidtoaster-logo.png").default,
           imgAlt: "...",
         }}
       />

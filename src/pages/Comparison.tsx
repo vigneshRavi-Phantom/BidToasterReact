@@ -64,7 +64,7 @@ function ComparisonPage() {
 
   useEffect(() => {
     if (userAccessType !== "buyer") {
-      navigate("/dashboard");
+      userAccessType == "vendor"? navigate("/rfq"): navigate("/users")
     }
     // eslint-disable-next-line
   }, [userAccessType]);
@@ -605,7 +605,7 @@ function ComparisonPage() {
                           <CSVLink
                             headers={rfqCSVHeaders}
                             data={rfqCSVData}
-                            filename="RFQ-Comparison"
+                            filename={values.vendorName}
                             ref={csvInstance}
                           />
                         </div>

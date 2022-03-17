@@ -159,6 +159,8 @@ const RfqForm = (props: any) => {
 
       getAllOrgItems();
       getAllVendors();
+      onHsnSearch('');
+      onUnspscSearch('');
     }
     // eslint-disable-next-line
   }, []);
@@ -187,12 +189,12 @@ const RfqForm = (props: any) => {
         itemCode: values.itemCode,
         hsnCode: values.hsnCode,
         unspscCode: values.unspscCode,
-        proposalDocAttachment: values.proposalDocAttachment,
+        proposalDocAttachment: values.isProposalDoc==='yes'?values.proposalDocAttachment:[],
         isProposalDoc: values.isProposalDoc,
         quantity: values.quantity,
         uom: values.uom,
         partNumber: values.partNumber,
-        description: values.description,
+        description: values.isProposalDoc==='no' ?values.description:"",
         purchaseRequestNumber: values.purchaseRequestNumber,
 
         bidType: values.bidType,
@@ -852,7 +854,8 @@ const RfqForm = (props: any) => {
                                       placeholder="Pin Code"
                                       value={values.pincode}
                                       type="text"
-                                      onChange={handleChange}
+                                      // onChange={handleChange}
+                                      onChange={handleNumberChange}
                                       name="pincode"
                                       autoComplete="off"
                                     />
@@ -911,7 +914,8 @@ const RfqForm = (props: any) => {
                                       placeholder="Mobile Number"
                                       value={values.phoneNumber}
                                       type="text"
-                                      onChange={handleChange}
+                                      // onChange={handleChange}
+                                      onChange={handleNumberChange}
                                       name="phoneNumber"
                                       autoComplete="off"
                                     />

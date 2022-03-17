@@ -65,6 +65,8 @@ function Profile() {
         <SimpleHeader name="Profile" parentName="Admin" />
         <Container className="mt--6" fluid>
           <Row className="row-example">
+            <Col lg='1'>
+            </Col>
             <Col lg="10">
               <div className="card-wrapper">
                 <Card>
@@ -142,6 +144,8 @@ function Profile() {
                   </CardBody>
                 </Card>
               </div>
+            </Col>
+            <Col lg='1'>
             </Col>
           </Row>
         </Container>

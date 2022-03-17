@@ -54,7 +54,7 @@ function OrgItems() {
 
   useEffect(() => {
     if (accountProfile && accountProfile.userAccessType !== "organization")
-      navigate("/dashboard");
+    navigate("/rfq");
 
     getOrgItemList();
     // eslint-disable-next-line

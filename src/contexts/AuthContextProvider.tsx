@@ -24,6 +24,7 @@ import jwt from "jsonwebtoken";
 import { JWTToken } from "config/constant";
 import { UserAccessType, USER_TYPE } from "helpers/interfaces";
 import { StringMap } from "helpers/interfaces";
+import { useCookies } from 'react-cookie';
 
 export interface UserState {
   userType: USER_TYPE;
@@ -59,9 +60,11 @@ export interface UserState {
   login: ({
     username,
     password,
+    rememberMe
   }: {
     username: string;
     password: string;
+    rememberMe: boolean;
   }) => Promise<any>;
   forgotPassword: ({ email }: { email: string }) => Promise<any>;
   resetPassword: ({
@@ -204,7 +207,7 @@ export const AuthContextProvider = ({
       });
     }
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
-
+  const [cookies, setCookie, removeCookie] = useCookies<any>(['loginUser']);
   const authActions = React.useMemo(
     () => ({
       refetchAccountProfile: async () => {
@@ -213,9 +216,11 @@ export const AuthContextProvider = ({
       login: async ({
         username,
         password,
+        rememberMe
       }: {
         username: string;
         password: string;
+        rememberMe: boolean;
       }) => {
         const { data } = await apolloClient.query({
           query: LOGIN_QUERY,
@@ -223,6 +228,13 @@ export const AuthContextProvider = ({
           fetchPolicy: "no-cache",
         });
         if (isSuccess("login", data)) {
+          if(rememberMe){
+            setCookie('username', username, { path: '/' });
+            setCookie('password', password, { path: '/' });
+          } else {
+            removeCookie('username');
+            removeCookie('password');
+          }
           await doLogin(data.login.data);
         }
       },
@@ -275,6 +287,7 @@ export const AuthContextProvider = ({
           await authActions.login({
             username: formValues.email,
             password: formValues.password,
+            rememberMe:false
           });
         }
       },
@@ -287,6 +300,7 @@ export const AuthContextProvider = ({
           await authActions.login({
             username: formValues.email,
             password: formValues.password,
+            rememberMe:false
           });
         }
       },

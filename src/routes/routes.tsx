@@ -34,7 +34,7 @@ function GuestRoute({ children }: { children: JSX.Element }) {
 
   if (accessToken === undefined) return null;
   if (accessToken) {
-    return <Navigate to={"/dashboard"} state={{ from: location }} />;
+    return <Navigate to={"/rfq"} state={{ from: location }} />;
   }
 
   return children;
@@ -98,14 +98,14 @@ const RoutesScreen = () => {
           }
         />
 
-        <Route
+        {/* <Route
           path="/dashboard"
           element={
             <ProtectedRoute>
               <Dashboard />
             </ProtectedRoute>
           }
-        />
+        /> */}
         <Route
           path="/settings/reset-password"
           element={

@@ -11,8 +11,9 @@ import {
   Nav,
 } from "reactstrap";
 
-function Sidebar({ toggleSidenav, sidenavOpen, routes, logo, rtlActive }: any) {
+function Sidebar({ toggleSidenav, sidenavOpen, routes, logo, logoIcon, rtlActive }: any) {
   const [state, setState] = React.useState<any>({});
+  const [onMouseLeave, setMouseLeave] = React.useState<any>(false);
   const location = useLocation();
   React.useEffect(() => {
     setState(getCollapseStates(routes));
@@ -24,12 +25,14 @@ function Sidebar({ toggleSidenav, sidenavOpen, routes, logo, rtlActive }: any) {
   };
   // makes the sidenav normal on hover (actually when mouse enters on it)
   const onMouseEnterSidenav = () => {
+    setMouseLeave(true);
     if (!document.body.classList.contains("g-sidenav-pinned")) {
       document.body.classList.add("g-sidenav-show");
     }
   };
   // makes the sidenav mini on hover (actually when mouse leaves from it)
   const onMouseLeaveSidenav = () => {
+    setMouseLeave(false);
     if (!document.body.classList.contains("g-sidenav-pinned")) {
       document.body.classList.remove("g-sidenav-show");
     }
@@ -154,7 +157,7 @@ function Sidebar({ toggleSidenav, sidenavOpen, routes, logo, rtlActive }: any) {
   const scrollBarInner = (
     <div className="scrollbar-inner">
       <div className="sidenav-header d-flex align-items-center">
-        {logo ? (
+        {onMouseLeave ? (
           <NavbarBrand {...navbarBrandProps}>
             <img
               alt={logo.imgAlt}
@@ -162,10 +165,17 @@ function Sidebar({ toggleSidenav, sidenavOpen, routes, logo, rtlActive }: any) {
               src={logo.imgSrc}
             />
           </NavbarBrand>
-        ) : null}
+        ) : <NavbarBrand style={{ display: 'block', padding: '1rem' }} {...navbarBrandProps}>
+        <img 
+          alt={logoIcon.imgAlt}
+          className="navbar-brand-img"
+          style={{ width: '100% !important' }}
+          src={logoIcon.imgSrc}
+        />
+      </NavbarBrand>}
         <div className="ml-auto">
           <div
-            className={classnames("sidenav-toggler d-none d-xl-block", {
+            className={classnames("sidenav-toggler d-xl-none d-block", {
               active: sidenavOpen,
             })}
             onClick={toggleSidenav}
@@ -226,6 +236,19 @@ Sidebar.propTypes = {
     // the alt for the img
     imgAlt: PropTypes.string.isRequired,
   }),
+    // logo
+    logoIcon: PropTypes.shape({
+      // innerLink is for links that will direct the user within the app
+      // it will be rendered as <Link to="...">...</Link> tag
+      innerLink: PropTypes.string,
+      // outterLink is for links that will direct the user outside the app
+      // it will be rendered as simple <a href="...">...</a> tag
+      outterLink: PropTypes.string,
+      // the image src of the logo
+      imgSrc: PropTypes.string.isRequired,
+      // the alt for the img
+      imgAlt: PropTypes.string.isRequired,
+    }),
   // rtl active, this will make the sidebar to stay on the right side
   rtlActive: PropTypes.bool,
 };

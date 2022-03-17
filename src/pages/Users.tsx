@@ -55,7 +55,7 @@ function Users() {
 
   useEffect(() => {
     if (accountProfile && accountProfile.userAccessType !== "organization")
-      navigate("/dashboard");
+      navigate("/rfq");
 
     getUsersList();
     // eslint-disable-next-line

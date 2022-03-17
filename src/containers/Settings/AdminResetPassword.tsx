@@ -68,11 +68,14 @@ const ResetPassword = () => {
       <SimpleHeader name="Settings" parentName="Admin" />
       <Container className="mt--6" fluid>
         <Row className="row-example">
+          <Col lg="3">
+          </Col>
           <Col lg="6">
             <div className="card-wrapper">
               <Card>
-                <CardHeader>
-                  <h3 className="mb-0">Reset Password</h3>
+                <CardHeader style={{ textAlign:'center' }}>
+                
+                  <h3 className="mb-0"> <img className="login-log" src={require("assets/img/bidtoaster-logo.png").default} />Reset Password</h3>
                 </CardHeader>
                 <CardBody>
                   {globalErrMsg !== "" && (
@@ -141,6 +144,8 @@ const ResetPassword = () => {
               </Card>
             </div>
           </Col>
+          <Col lg="3">
+        </Col>             
         </Row>
       </Container>
     </Layout>

@@ -48,7 +48,7 @@ function HomeNavbar() {
             <div className="navbar-collapse-header">
               <Row>
                 <Col className="collapse-brand" xs="6">
-                  <Link to="/admin/dashboard">
+                  <Link to="/rfq">
                     <img
                       alt="..."
                       src={require("assets/img/brand/blue.png").default}
@@ -73,17 +73,17 @@ function HomeNavbar() {
               </Row>
             </div>
             <Nav className="mr-auto" navbar>
-              <NavItem>
+              {/* <NavItem>
                 <NavLink to="/dashboard" tag={Link}>
                   <span className="nav-link-inner--text">Dashboard</span>
                 </NavLink>
-              </NavItem>
+              </NavItem> */}
               <NavItem>
                 <NavLink to="/login" tag={Link}>
                   <span className="nav-link-inner--text">Pricing</span>
                 </NavLink>
               </NavItem>
-              <NavItem>
+              {/* <NavItem>
                 <NavLink to="/login" tag={Link}>
                   <span className="nav-link-inner--text">Login</span>
                 </NavLink>
@@ -92,7 +92,7 @@ function HomeNavbar() {
                 <NavLink to="/signup" tag={Link}>
                   <span className="nav-link-inner--text">Signup</span>
                 </NavLink>
-              </NavItem>
+              </NavItem> */}
             </Nav>
             <hr className="d-lg-none" />
             <Nav className="align-items-lg-center ml-lg-auto" navbar>
@@ -160,11 +160,21 @@ function HomeNavbar() {
               </NavItem>
               <NavItem className="d-none d-lg-block ml-lg-4">
                 <Link
-                  className="btn btn-neutral btn-icon"
+                  className="btn btn-neutral btn-icon pointer"
                   color="default"
                   to="/login"
                 >
                   <span className="nav-link-inner--text">Login</span>
+                </Link>
+              </NavItem>
+
+              <NavItem className="d-none d-lg-block ml-lg-4">
+                <Link
+                  className="btn btn-neutral btn-icon pointer"
+                  color="default"
+                  to="/signup"
+                >
+                  <span className="nav-link-inner--text">Sign up</span>
                 </Link>
               </NavItem>
             </Nav>

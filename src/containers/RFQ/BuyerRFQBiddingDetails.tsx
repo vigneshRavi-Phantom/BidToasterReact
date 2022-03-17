@@ -297,6 +297,7 @@ function RFQDetailsPage() {
               </Row>
               <Row className="row-example">
                 <Col lg="5">
+                  {rfqDetailsList.isProposalDoc ==='yes'?
                   <FormGroup>
                     <label className="form-control-label">
                       Upload Proposal Document
@@ -313,7 +314,14 @@ function RFQDetailsPage() {
                         </a>
                       )}
                     </span>
+                  </FormGroup> :
+                  <FormGroup>
+                    <label className="form-control-label">Description</label>
+                    <span className="disable">
+                      {rfqDetailsList.description}
+                    </span>
                   </FormGroup>
+                  }
                 </Col>
                 <Col lg="5">
                   <FormGroup>
@@ -339,14 +347,6 @@ function RFQDetailsPage() {
               <Row className="row-example">
                 <Col lg="5">
                   <FormGroup>
-                    <label className="form-control-label">Description</label>
-                    <span className="disable">
-                      {rfqDetailsList.description}
-                    </span>
-                  </FormGroup>
-                </Col>
-                <Col lg="5">
-                  <FormGroup>
                     <label className="form-control-label">
                       Purchase Request Number
                     </label>
@@ -355,8 +355,19 @@ function RFQDetailsPage() {
                     </span>
                   </FormGroup>
                 </Col>
+                <Col lg="5">
+                <FormGroup>
+                    <label className="form-control-label">Vendors</label>
+                    <span className="disable">
+                      {rfqDetailsList.vendorIds &&
+                      rfqDetailsList.vendorIds.length > 0
+                        ? rfqDetailsList.vendorIds.join(", ")
+                        : rfqDetailsList.vendorIds}
+                    </span>
+                  </FormGroup>
+                </Col>
               </Row>
-              <Row className="row-example">
+              {/* <Row className="row-example">
                 <Col lg="5">
                   <FormGroup>
                     <label className="form-control-label">Vendors</label>
@@ -368,7 +379,7 @@ function RFQDetailsPage() {
                     </span>
                   </FormGroup>
                 </Col>
-              </Row>
+              </Row> */}
 
               <hr />
               <CardHeader className="border-0">

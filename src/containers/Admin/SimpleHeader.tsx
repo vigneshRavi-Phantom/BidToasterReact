@@ -18,7 +18,7 @@ function TimelineHeader({ name, parentName }: any) {
                 <h6 className="fullcalendar-title h2 text-white d-inline-block mb-0">
                   {name}
                 </h6>{" "}
-                <Breadcrumb
+                {/* <Breadcrumb
                   className="d-none d-md-inline-block ml-lg-4"
                   listClassName="breadcrumb-links breadcrumb-dark"
                 >
@@ -35,7 +35,7 @@ function TimelineHeader({ name, parentName }: any) {
                   <BreadcrumbItem aria-current="page" className="active">
                     {name}
                   </BreadcrumbItem>
-                </Breadcrumb>
+                </Breadcrumb> */}
               </Col>
             </Row>
           </div>

@@ -51,7 +51,7 @@ function AuthNavbar() {
             <div className="navbar-collapse-header">
               <Row>
                 <Col className="collapse-brand" xs="6">
-                  <Link to="/admin/dashboard">
+                  <Link to="/rfq">
                     <img
                       alt="..."
                       src={require("assets/img/brand/blue.png").default}
@@ -76,17 +76,17 @@ function AuthNavbar() {
               </Row>
             </div>
             <Nav className="mr-auto" navbar>
-              <NavItem>
+              {/* <NavItem>
                 <NavLink to="/dashboard" tag={Link}>
                   <span className="nav-link-inner--text">Dashboard</span>
                 </NavLink>
-              </NavItem>
+              </NavItem> */}
               <NavItem>
                 <NavLink to="/login" tag={Link}>
                   <span className="nav-link-inner--text">Pricing</span>
                 </NavLink>
               </NavItem>
-              <NavItem>
+              {/* <NavItem>
                 <NavLink to="/login" tag={Link}>
                   <span className="nav-link-inner--text">Login</span>
                 </NavLink>
@@ -95,12 +95,12 @@ function AuthNavbar() {
                 <NavLink to="/signup" tag={Link}>
                   <span className="nav-link-inner--text">Signup</span>
                 </NavLink>
-              </NavItem>
-              <NavItem>
+              </NavItem> */}
+              {pathname !== "/vendor-signup" && <NavItem>
                 <NavLink to="/vendor-signup" tag={Link}>
                   <span className="nav-link-inner--text">Vendor Signup</span>
                 </NavLink>
-              </NavItem>
+              </NavItem>}
             </Nav>
             <hr className="d-lg-none" />
             <Nav className="align-items-lg-center ml-lg-auto" navbar>

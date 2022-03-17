@@ -28,14 +28,17 @@ import AuthHeader from "containers/Auth/AuthHeader";
 import AuthNavbar from "containers/Auth/AuthNavbar";
 import HomeFooter from "containers/Home/HomeFooter";
 
-const initialValues = {
-  username: "",
-  password: "",
-};
+import { useCookies } from 'react-cookie';
 
 const Login = () => {
+  const [cookies, setCookie] = useCookies<any>(['loginUser']);
   const { strings }: any = useLocalization();
-  const { values, handleChange, handleSubmit } = useForm(
+  const initialValues = {
+    username: cookies?.username? cookies.username:"",
+    password: cookies?.password? cookies.password:"",
+    rememberMe: (cookies?.username && cookies?.password)? true : false
+  };
+  const { values, handleChange, handleCheckboxChange, handleSubmit } = useForm(
     initialValues,
     handleSubmitCB,
     loginValidate
@@ -49,6 +52,7 @@ const Login = () => {
     login({
       username: values.username.toLowerCase(),
       password: values.password,
+      rememberMe: values.rememberMe
     }).catch((err) => {
       setGlobalErrMsg(
         strings["error." + errorCode(err)] || strings["error.e10100"]
@@ -71,6 +75,7 @@ const Login = () => {
               <Card className="bg-secondary border-0 mb-0">
                 <CardBody className="px-lg-5 py-lg-5">
                   <div className="text-center text-muted mb-4">
+                    <img className="login-log" src={require("assets/img/bidtoaster-logo.png").default} />
                     <small>Login with credentials</small>
                   </div>
                   {globalErrMsg !== "" && (
@@ -122,6 +127,9 @@ const Login = () => {
                         className="custom-control-input"
                         id=" customCheckLogin"
                         type="checkbox"
+                        name="checkbox"
+                        checked={values.rememberMe}
+                        onChange={(e)=>handleCheckboxChange(e.target.checked, 'rememberMe')}
                       />
                       <label
                         className="custom-control-label"
@@ -136,20 +144,20 @@ const Login = () => {
                       </Button>
                     </div>
                   </Form>
+                  <Row className="mt-3">
+                    <Col  xs="6">
+                    {/* <Link className="text-light" to="/signup">
+                      <small>Sign up</small>
+                    </Link> */}
+                    </Col>
+                    <Col className="text-right" xs="6">
+                      <Link className="text-light" to="/forgot-password">
+                        <small>Forgot password?</small>
+                      </Link>
+                    </Col>
+                  </Row>
                 </CardBody>
               </Card>
-              <Row className="mt-3">
-                <Col xs="6">
-                  <Link className="text-light" to="/forgot-password">
-                    <small>Forgot password?</small>
-                  </Link>
-                </Col>
-                <Col className="text-right" xs="6">
-                  <Link className="text-light" to="/signup">
-                    <small>Sign up</small>
-                  </Link>
-                </Col>
-              </Row>
             </Col>
           </Row>
         </Container>

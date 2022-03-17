@@ -60,13 +60,16 @@ function RFQPage() {
   });
 
   useEffect(() => {
+    if(accountProfile && accountProfile.userAccessType === "organization")
+      navigate("/users");
+
     if (
       accountProfile && accountProfile.id &&
       !(
         accountProfile.userAccessType === "buyer" ||
         accountProfile.userAccessType === "vendor"
       )
-    ) { navigate("/dashboard"); }
+    ) { navigate("/users"); }
     getRfqList();
     // eslint-disable-next-line
   }, [accountProfile]);
