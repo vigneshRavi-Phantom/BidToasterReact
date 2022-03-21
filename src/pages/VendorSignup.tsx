@@ -219,7 +219,7 @@ function Signup() {
         <AuthNavbar />
         <AuthHeader
           title="Welcome to Bidtoaster!"
-          lead="Use these awesome forms to login or create new account in your project for free."
+          lead=""
         />
         <Container className="mt--8 pb-5">
           <Row className="justify-content-center">

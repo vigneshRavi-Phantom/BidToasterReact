@@ -44,6 +44,7 @@ img{
 }
 #navbar-main{
   background-color: #fff !important;
+  padding: 0.5rem 1rem !important;
 }
 .navbar-dark .navbar-nav .nav-link{
   color: #000 !important;

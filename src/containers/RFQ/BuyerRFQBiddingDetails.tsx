@@ -47,7 +47,7 @@ function RFQDetailsPage() {
 
   useEffect(() => {
     if (accountProfile && accountProfile.userAccessType === "vendor")
-      navigate("/rfq");
+      navigate("/dashboard");
 
     // eslint-disable-next-line
   }, []);

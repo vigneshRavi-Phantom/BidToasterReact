@@ -29,19 +29,25 @@ const VendorProfile = lazy(() => import("pages/VendorProfile"));
 const Comparison = lazy(() => import("pages/Comparison"));
 
 function GuestRoute({ children }: { children: JSX.Element }) {
-  const { accessToken } = useAuth();
+  const { accessToken, accountProfile } = useAuth();
   let location = useLocation();
 
   if (accessToken === undefined) return null;
   if (accessToken) {
-    return <Navigate to={"/rfq"} state={{ from: location }} />;
+    return <Navigate to={"/dashboard"} state={{ from: location }} />;
+    // if(accountProfile && accountProfile.userAccessType === "organization")
+    // return <Navigate to={"/users"} state={{ from: location }} />;
+    // else if(accountProfile && (accountProfile.userAccessType === "buyer" || accountProfile.userAccessType === "vendor"))
+    // return <Navigate to={"/rfq"} state={{ from: location }} />;
   }
 
   return children;
 }
 
 function ProtectedRoute({ children }: { children: JSX.Element }) {
-  const { accessToken } = useAuth();
+  const { accessToken, accountProfile } = useAuth();
+  console.log('accountProfile', accountProfile);
+  console.log('accessToken', accessToken);
   let location = useLocation();
   if (accessToken === undefined) return null;
   if (!accessToken) {
@@ -98,14 +104,14 @@ const RoutesScreen = () => {
           }
         />
 
-        {/* <Route
+        <Route
           path="/dashboard"
           element={
             <ProtectedRoute>
               <Dashboard />
             </ProtectedRoute>
           }
-        /> */}
+        />
         <Route
           path="/settings/reset-password"
           element={

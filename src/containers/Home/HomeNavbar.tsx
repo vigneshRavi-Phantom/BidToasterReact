@@ -78,11 +78,11 @@ function HomeNavbar() {
                   <span className="nav-link-inner--text">Dashboard</span>
                 </NavLink>
               </NavItem> */}
-              <NavItem>
+              {/* <NavItem>
                 <NavLink to="/login" tag={Link}>
                   <span className="nav-link-inner--text">Pricing</span>
                 </NavLink>
-              </NavItem>
+              </NavItem> */}
               {/* <NavItem>
                 <NavLink to="/login" tag={Link}>
                   <span className="nav-link-inner--text">Login</span>
@@ -96,7 +96,7 @@ function HomeNavbar() {
             </Nav>
             <hr className="d-lg-none" />
             <Nav className="align-items-lg-center ml-lg-auto" navbar>
-              <NavItem>
+              {/* <NavItem>
                 <NavLink
                   className="nav-link-icon"
                   href="https://www.facebook.com"
@@ -157,7 +157,7 @@ function HomeNavbar() {
                 <UncontrolledTooltip delay={0} target="tooltip931502898">
                   Star us on Github
                 </UncontrolledTooltip>
-              </NavItem>
+              </NavItem> */}
               <NavItem className="d-none d-lg-block ml-lg-4">
                 <Link
                   className="btn btn-neutral btn-icon pointer"

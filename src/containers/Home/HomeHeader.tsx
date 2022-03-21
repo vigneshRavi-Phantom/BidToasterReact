@@ -20,7 +20,7 @@ function HomeHeader() {
                     <Button
                       className="btn-neutral my-2"
                       color="default"
-                      to="/dashboard"
+                      to="/rfq"
                       tag={Link}
                     >
                       Explore Dashboard

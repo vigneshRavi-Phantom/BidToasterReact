@@ -3,7 +3,7 @@ import { NavItem, NavLink, Nav, Container, Row, Col } from "reactstrap";
 function HomeFooter() {
   return (
     <>
-      <footer className="py-5" id="footer-main">
+      <footer className="py-2" id="footer-main">
         <Container>
           <Row className="align-items-center justify-content-xl-between">
             <Col xl="6">

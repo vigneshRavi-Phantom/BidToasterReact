@@ -60,16 +60,17 @@ function RFQPage() {
   });
 
   useEffect(() => {
-    if(accountProfile && accountProfile.userAccessType === "organization")
-      navigate("/users");
 
-    if (
-      accountProfile && accountProfile.id &&
-      !(
-        accountProfile.userAccessType === "buyer" ||
-        accountProfile.userAccessType === "vendor"
-      )
-    ) { navigate("/users"); }
+    if(accountProfile && accountProfile.userAccessType === "organization")
+      navigate("/dashboard");
+    console.log('accountProfile', accountProfile);
+    // if (
+    //   accountProfile && accountProfile.id &&
+    //   !(
+    //     accountProfile.userAccessType === "buyer" ||
+    //     accountProfile.userAccessType === "vendor"
+    //   )
+    // ) { navigate("/users"); }
     getRfqList();
     // eslint-disable-next-line
   }, [accountProfile]);

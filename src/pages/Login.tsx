@@ -63,17 +63,17 @@ const Login = () => {
 
   return (
     <>
-      <div className="main-content bg-default">
+      <div className="main-content bg-default" style={{height:'100vh'}}>
         <AuthNavbar />
         <AuthHeader
-          title="Welcome!"
-          lead="Use these awesome forms to login or create new account in your project for free."
+          title="Welcome to Bidtoaster!"
+          lead=""
         />
         <Container className="mt--8 pb-5">
           <Row className="justify-content-center">
             <Col lg="5" md="7">
               <Card className="bg-secondary border-0 mb-0">
-                <CardBody className="px-lg-5 py-lg-5">
+                <CardBody className="px-lg-4 py-lg-4">
                   <div className="text-center text-muted mb-4">
                     <img className="login-log" src={require("assets/img/bidtoaster-logo.png").default} />
                     <small>Login with credentials</small>
@@ -139,12 +139,12 @@ const Login = () => {
                       </label>
                     </div>
                     <div className="text-center">
-                      <Button className="my-4" color="info" type="submit" disabled={values.email === '' || values.password === '' }>
+                      <Button className="my-2" color="info" type="submit" disabled={values.email === '' || values.password === '' }>
                         {loading ? <Spinner size="sm" /> : 'Login'}
                       </Button>
                     </div>
                   </Form>
-                  <Row className="mt-3">
+                  <Row className="mt-0">
                     <Col  xs="6">
                     {/* <Link className="text-light" to="/signup">
                       <small>Sign up</small>

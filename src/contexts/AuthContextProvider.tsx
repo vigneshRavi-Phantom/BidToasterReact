@@ -86,6 +86,7 @@ export const initialState: UserState = {
   error: undefined,
   accessToken: undefined,
   userAccessType: "buyer",
+  accountProfile:undefined,
   refetchAccountProfile: async () => {},
   signup: async () => {},
   vendorSignup: async () => {},
@@ -191,6 +192,8 @@ export const AuthContextProvider = ({
 
   const doLogout = useCallback(async () => {
     await setItem("bt.token", "");
+    await setItem("bt.userAccessType", "");
+    await setItem("bt.userId", "");
     // setCurrentAccessToken("");
     dispatch({ name: "LOG_OUT" });
   }, []);
@@ -201,6 +204,8 @@ export const AuthContextProvider = ({
       variables: { input: { accessToken } },
     });
     if (isSuccess("getAccountProfile", data)) {
+      await setItem("bt.userId", data.getAccountProfile.data[0].id);
+      await setItem("bt.userAccessType", data.getAccountProfile.data[0].userAccessType);
       dispatch({
         name: "UPDATE_ACCOUNT_PROFILE",
         accountProfile: data.getAccountProfile.data[0],
@@ -287,7 +292,7 @@ export const AuthContextProvider = ({
           await authActions.login({
             username: formValues.email,
             password: formValues.password,
-            rememberMe:false
+            rememberMe:true
           });
         }
       },
@@ -300,7 +305,7 @@ export const AuthContextProvider = ({
           await authActions.login({
             username: formValues.email,
             password: formValues.password,
-            rememberMe:false
+            rememberMe:true
           });
         }
       },

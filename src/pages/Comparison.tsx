@@ -64,7 +64,7 @@ function ComparisonPage() {
 
   useEffect(() => {
     if (userAccessType !== "buyer") {
-      userAccessType == "vendor"? navigate("/rfq"): navigate("/users")
+      navigate("/dashboard");
     }
     // eslint-disable-next-line
   }, [userAccessType]);
