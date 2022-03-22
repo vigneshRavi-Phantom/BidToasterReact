@@ -6,6 +6,7 @@ import { ModalContextProvider } from "contexts/ModalContextProvider";
 import { ApolloProvider, client } from "utils/ApolloUtils";
 import unspscDataList from "assets/json/unspsc.json";
 import { CookiesProvider } from 'react-cookie';
+import SessionTimeout from "helpers/session";
 
 const App = () => {
 //   window.addEventListener("beforeunload", (ev) => {
@@ -31,6 +32,7 @@ const App = () => {
             <AuthContextProvider>
               <ModalContextProvider>
                 <Routes />
+                <SessionTimeout />
               </ModalContextProvider>
             </AuthContextProvider>
           </LocalizationContextProvider>

@@ -80,6 +80,7 @@ function Signup() {
               <Card className="bg-secondary border-0 mb-0">
                 <CardBody className="px-lg-5 py-lg-5">
                   <div className="text-center text-muted mb-4">
+                  <img className="login-log" src={require("assets/img/bidtoaster-logo.png").default} />
                     <small>Let’s get start setting up your Account</small>
                   </div>
                   {globalErrMsg !== "" && (
